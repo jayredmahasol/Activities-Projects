@@ -1,0 +1,76 @@
+public class SandwichMahasol 
+{
+    private String mainIngredient;
+    private String breadType;
+    private double price;
+
+    public String getMainIngredient()
+    {
+        return mainIngredient;
+    }
+    public void setMainIngredient(String mainIng)
+    {
+        mainIngredient = mainIng;
+    }
+
+    public String getbreadType()
+    {
+        return breadType;
+    }
+    public void setbreadType(String breadtype)
+    {
+        breadType = breadtype;
+    }
+
+    public double getprice()
+    {
+        return price;
+    }
+    public void setprice(double costprice)
+    {
+        price = costprice;
+    }
+
+    public void Display()
+    {
+        mainIngredient = mainIngredient;
+        breadType = breadType;
+        price = price;
+
+        System.out.println("Sandwich Main Ingredient: " + mainIngredient + "\nBread Type: " + breadType + "\nPrice: " + price);
+    }
+}
+
+
+
+
+
+
+
+
+
+import java.util.*;
+public class TestSandwichMahasol {
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        String mainIngredient;
+        String breadType;
+        double price;
+        
+        SandwichMahasol s2 = new SandwichMahasol();
+
+        System.out.println("Enter Sandwich Ingredients: ");
+        mainIngredient = scan.next();
+        System.out.println("Enter Sandwich Bread Type: ");
+        breadType = scan.next();
+        System.out.println("Enter Price: ");
+        price = scan.nextDouble();
+
+        s2.setMainIngredient(mainIngredient);
+        s2.setbreadType(breadType);
+        s2.setprice(price);
+        s2.Display(); 
+            
+    }
+}
