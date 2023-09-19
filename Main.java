@@ -1,0 +1,168 @@
+import java.util.*;
+
+public class Main {
+   
+    private static int[] array = new int[10]; // Create an integer array with a size of 10
+    private static int size = 0 ; // Current size of the array
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+         
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Populate the array");
+            System.out.println("2. Insert an element");
+            System.out.println("3. Delete an element");
+            System.out.println("4. Search for an element");
+            System.out.println("5. Sort the array");
+            System.out.println("6. Print the array");
+            System.out.println("7. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = input.nextInt();
+
+            switch (choice) {
+                case 1:
+                    populateArray(input);
+                    break;
+                case 2:
+                    insertElement(input);
+                    break;
+                case 3:
+                    deleteElement(input);
+                    break;
+                case 4:
+                    searchElement(input);
+                    break;
+                case 5:
+                    sortArray();
+                    break;
+                case 6:
+                    printArray();
+                    break;
+                case 7:
+                    System.out.println("Exiting the program.");
+                    input.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+        }
+    }
+   
+    private static void populateArray(Scanner input) {
+
+      System.out.println("Enter the size: ");
+      size = input.nextInt();  
+      
+      int i = 0;
+      
+      System.out.print("Enter numbers to populate the array: ");     
+      for (i = 0; i < size; i++) {
+          array[i] = input.nextInt();   
+          }
+          // System.out.println("size:" + size + " i value:" + i);
+          /*if(size < (i + 1)) {
+               System.out.println("The number you input exceed to your size the program exit");
+            }*/
+          
+      }
+  
+
+    private static void insertElement(Scanner input) {
+        if (size == array.length) {
+            System.out.println("Array is full. Cannot insert more elements.");
+        } else {
+            System.out.print("Enter the number to insert: ");
+            int element = input.nextInt();
+            System.out.print("Enter the index to insert at: ");
+            int index = input.nextInt();
+
+            if (index < 0 || index > size) {
+                System.out.println("Invalid index.");
+            } else {
+                // Shift elements to make space for the new element
+                for (int i = size; i > index; i--) {
+                    array[i] = array[i - 1];
+                }
+                array[index] = element;
+                System.out.println("The number " + element + " has succesfully inserted in index " + index);
+                size++;
+            }
+        }
+    }
+
+   private static void deleteElement(Scanner input) {
+       if (size == 0) {
+           System.out.println("Array is empty. Nothing to delete.");
+       } else {
+            System.out.print("Enter the index to delete: ");
+            int index = input.nextInt();
+
+            if (index < 0 || index >= size) {
+                System.out.println("Invalid index.");
+            } else {
+                // Shift elements to remove the element
+                for (int i = index; i < size - 1; i++) {
+                    array[i] = array[i + 1];
+                    
+                }
+                size--;
+                System.out.println("The number in index " + index + " was deleted" );
+            }
+        }
+    }
+
+   private static void searchElement(Scanner input) {
+            
+      System.out.print("Enter the element to search for: ");
+      int searchElement = input.nextInt();
+      boolean found = false;
+
+      for (int i = 0; i < size; i++) {
+          if (array[i] == searchElement) {
+              System.out.println("Element found at index: " + i + " Which is number: " + array[i]);
+              found = true;
+              break;
+          }
+      }
+
+      if (!found) {
+          System.out.println("Element not found in the array.");
+      }
+  }
+
+   private static void sortArray() {
+      if (size == 0) {
+          System.out.println("Array is empty. There is nothing to sort.");
+      } else {
+         
+         Arrays.sort(array, 0, size); // Sort the array from index 0 to size-1
+         System.out.println("Array sorted successfully.");
+         // After sorting the array using the pre-define sort, It will print out the new sorted array elements
+         System.out.println("The sorted array Contents: ");
+         for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+         }
+         
+      }
+
+}
+
+    private static void printArray() {
+         
+        if (size == 0) {
+            System.out.println("Array is empty. There is nothing to print.");
+        } else {
+        
+            System.out.print("Array elements: ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+        
+        }
+    }
+}
