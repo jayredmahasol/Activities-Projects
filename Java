@@ -1,10 +1,14 @@
+/* NAME: JAYRED DEIL N. MAHASOL
+   TITLE: ARRAY BASED LIST
+   SECTION: 2B */
+
 import java.util.*;
 
 public class Main {
    
     private static int[] array = new int[10]; // Create an integer array with a size of 10
     private static int size = 0 ; // Current size of the array
-
+   
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
@@ -57,25 +61,26 @@ public class Main {
       System.out.println("Enter the size: ");
       size = input.nextInt();  
       
-      int i = 0;
+      
       
       System.out.print("Enter numbers to populate the array: ");     
-      for (i = 0; i < size; i++) {
+      for (int i = 0; i < size; i++) {
           array[i] = input.nextInt();   
           }
-          // System.out.println("size:" + size + " i value:" + i);
-          /*if(size < (i + 1)) {
-               System.out.println("The number you input exceed to your size the program exit");
-            }*/
+          
           
       }
   
 
     private static void insertElement(Scanner input) {
-        if (size == array.length) {
+
+        if (size == 0) {
+            System.out.println("Array is Empty. Cannot insert more elements.");
+        } else if (size == array.length) {
             System.out.println("Array is full. Cannot insert more elements.");
-        } else {
-            System.out.print("Enter the number to insert: ");
+         } else {
+         
+         System.out.print("Enter the number to insert: ");
             int element = input.nextInt();
             System.out.print("Enter the index to insert at: ");
             int index = input.nextInt();
@@ -91,8 +96,12 @@ public class Main {
                 System.out.println("The number " + element + " has succesfully inserted in index " + index);
                 size++;
             }
-        }
-    }
+         
+      }  
+   }
+   
+   
+
 
    private static void deleteElement(Scanner input) {
        if (size == 0) {
@@ -116,7 +125,9 @@ public class Main {
     }
 
    private static void searchElement(Scanner input) {
-            
+      if (size == 0) {
+          System.out.println("Array is empty. There is nothing to sort.");
+      } else {      
       System.out.print("Enter the element to search for: ");
       int searchElement = input.nextInt();
       boolean found = false;
@@ -128,10 +139,11 @@ public class Main {
               break;
           }
       }
-
       if (!found) {
           System.out.println("Element not found in the array.");
       }
+}
+      
   }
 
    private static void sortArray() {
