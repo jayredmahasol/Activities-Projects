@@ -1,0 +1,132 @@
+import java.util.*;
+public class test4 {
+   int data; 
+   test4 next;
+   
+   public test4(int data) {
+      this.data = data;
+      this.next = null;
+   }
+   
+   static test4 head; // the head
+   
+   // Static method for printing the list
+   public static void printList() {
+      test4 current = head;
+      System.out.print("\n[");
+
+      // Start from the beginning
+      while (current != null) {
+         System.out.print(" " + current.data + " ");
+         current = current.next;
+      }
+      System.out.print("]");
+   }
+   
+   // Static method for inserting at the beginning
+   public static void insertAtBegin(int data) {
+      // Create a new node
+      test4 newNode = new test4(data);
+
+      // Point it to the old first node
+      newNode.next = head;
+
+      // Point the head to the new first node
+      head = newNode;
+   }
+   
+   // Static method for inserting at the end
+   public static void insertatend(int data) {
+   
+      //create a link
+      test4 lk = new test4(data);
+      test4 linkedlist = head;
+
+      // point it to old first node
+      while(linkedlist.next != null)
+         linkedlist = linkedlist.next;
+
+      //point first to new first node
+      linkedlist.next = lk;
+   }
+   
+   public static void insertafternode(test4 list, int data) {
+      test4 lk = new test4(data);
+      lk.next = list.next;
+      list.next = lk;
+   }
+   
+   // Static method for deleting at the beginning 
+   public static void deleteatbegin() {
+      head = head.next;
+   }
+   // Static method for deleting at the end 
+   public static void deleteatend() {
+      test4 linkedlist = head;
+      while (linkedlist.next.next != null)
+         linkedlist = linkedlist.next;
+      linkedlist.next = null;
+   }
+   
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      
+      while (true) {
+         System.out.println("\nMenu:");
+         System.out.println("1. Insert an element at the beginning of the list");
+         System.out.println("2. Insert an element at the end of the list");
+         System.out.println("3. Insert an element at a specified position of the list");
+         System.out.println("4. Delete the element at the beginnning of the list");
+         System.out.println("5. Delete the element at the end of the list");
+         System.out.println("6. Delete an element at a specified position of the list");
+         System.out.println("7. Print the list");
+         System.out.println("8. Exit");
+         System.out.print("Enter your choice: ");
+         int choice = sc.nextInt();
+
+      switch(choice) {
+         case 1:
+            System.out.print("Enter the value to insert: ");
+            int value = sc.nextInt();
+            insertAtBegin(value);
+         break;
+         case 2:
+            System.out.print("Enter the value to insert: ");
+            value = sc.nextInt();
+            insertatend(value);    
+         break;
+         case 3:
+            /* System.out.print("Enter the value to insert: ");
+            value = sc.nextInt();
+            System.out.println("POsition: ");
+            int position = sc.nextInt();
+            insertafternode(value);*/   
+         break;
+         case 4:
+            deleteatbegin();
+         break;
+         case 5:
+            deleteatend();   
+         break;
+         case 6:
+            
+         break;
+         case 7:
+           System.out.println("Linked List:");
+           printList();
+         break;   
+         case 8:
+            System.out.println("Exiting the program.");
+            sc.close();
+            System.exit(0);
+         default:
+            System.out.println("Invalid choice. Please enter a valid option.");
+         break;
+                    
+            }// end of switch case
+            
+        } // end of while loop
+        
+    }// end of the main method
+   
+} // end of the class
