@@ -1,18 +1,18 @@
 import java.util.*;
-public class test4 {
+public class Node {
    int data; 
-   test4 next;
+   Node next;
    
-   public test4(int data) {
+   public Node(int data) {
       this.data = data;
       this.next = null;
    }
    
-   static test4 head; // the head
+   static Node head; // the head
    
    // Static method for printing the list
    public static void printList() {
-      test4 current = head;
+      Node current = head;
       System.out.print("\n[");
 
       // Start from the beginning
@@ -25,13 +25,13 @@ public class test4 {
    
    // Static method for inserting at the beginning
    public static void insertAtBegin(int data) {
-      // Create a new node
-      test4 newNode = new test4(data);
+      
+      Node newNode = new Node(data);
 
-      // Point it to the old first node
+      
       newNode.next = head;
 
-      // Point the head to the new first node
+      
       head = newNode;
    }
    
@@ -39,8 +39,8 @@ public class test4 {
    public static void insertatend(int data) {
    
       //create a link
-      test4 lk = new test4(data);
-      test4 linkedlist = head;
+      Node lk = new Node(data);
+      Node linkedlist = head;
 
       // point it to old first node
       while(linkedlist.next != null)
@@ -50,8 +50,8 @@ public class test4 {
       linkedlist.next = lk;
    }
    
-   public static void insertafternode(test4 list, int data) {
-      test4 lk = new test4(data);
+   public static void insertafternode(Node list, int data) {
+      Node lk = new Node(data);
       lk.next = list.next;
       list.next = lk;
    }
@@ -60,12 +60,34 @@ public class test4 {
    public static void deleteatbegin() {
       head = head.next;
    }
+   
    // Static method for deleting at the end 
    public static void deleteatend() {
-      test4 linkedlist = head;
+      Node linkedlist = head;
       while (linkedlist.next.next != null)
          linkedlist = linkedlist.next;
-      linkedlist.next = null;
+         linkedlist.next = null;
+   }
+   
+   static void deletenode(int key) {
+      Node temp = head;
+      Node prev = null;
+      if (temp != null && temp.data == key) {
+         head = temp.next;
+         return;
+      }
+      
+      // Find the key to be deleted
+      while (temp != null && temp.data != key) {
+         prev = temp;
+         temp = temp.next;
+      }
+      
+      // If the key is not present
+      if (temp == null) return;
+      
+      // Remove the node
+      prev.next = temp.next;
    }
    
    public static void main(String[] args) {
@@ -89,27 +111,33 @@ public class test4 {
             System.out.print("Enter the value to insert: ");
             int value = sc.nextInt();
             insertAtBegin(value);
+            printList();
          break;
          case 2:
             System.out.print("Enter the value to insert: ");
             value = sc.nextInt();
-            insertatend(value);    
+            insertatend(value);
+            printList(); 
          break;
          case 3:
-            /* System.out.print("Enter the value to insert: ");
+            System.out.println("Enter the value to insert: ");
             value = sc.nextInt();
-            System.out.println("POsition: ");
-            int position = sc.nextInt();
-            insertafternode(value);*/   
+            insertafternode(head.next.next, value);
+            printList();
          break;
          case 4:
             deleteatbegin();
+            printList();
          break;
          case 5:
-            deleteatend();   
+            deleteatend();
+            printList();   
          break;
          case 6:
-            
+            System.out.println("Enter number: ");
+            value = sc.nextInt();
+            deletenode(value);
+            printList();
          break;
          case 7:
            System.out.println("Linked List:");
