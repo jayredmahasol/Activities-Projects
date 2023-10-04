@@ -1,0 +1,59 @@
+import java.util.*;
+public class PremiumSugarSmashPlayer extends SugarSmashPlayer {
+    private int premium;
+    private boolean access;
+    Scanner sc = new Scanner(System.in);
+    
+    
+   public PremiumSugarSmashPlayer() {
+      super();
+      premium = 2;
+      access = false;
+   }
+   
+   public PremiumSugarSmashPlayer(int playerId, String screenName, int highScores, int premium, boolean access) {
+      super(playerId, screenName, highScores);
+      this.premium = premium;
+      this.access = access; 
+   }
+   
+   public void setPremium(int premium) {
+      this.premium = premium;
+   }
+   public int getPremium() {
+      return this.premium;
+   }
+   
+   public void setAccess(boolean access) {
+      this.access = access;
+   }
+   public boolean getAccess() {
+      return this.access;
+   }
+   
+   public void Display() {
+      super.Display();
+      
+      System.out.println("Do you want to access Premium? "
+                        + "Answer with True or False only");
+      access = sc.nextBoolean();
+      
+      if(access = true) {
+      
+      System.out.println("Setting scores for Premium Player:");
+      for (int i = 1; i <= 10; i++) {
+            System.out.print("Enter the score for level " + i + ": ");
+            int score = sc.nextInt();
+            
+        }
+      
+      System.out.println("Premium Player's Scores:");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Level " + i + ": ");
+        }
+      
+      } 
+     
+   }
+   
+}
